@@ -55,8 +55,8 @@
 	let orpWidth = $state(0);
 	let afterWidth = $state(0);
 
-	let effectiveWidth = $derived(2 * Math.max(beforeWidth, afterWidth) + orpWidth);
-	let scale = $derived(containerWidth > 0 && effectiveWidth > containerWidth - 32 ? (containerWidth - 32) / effectiveWidth : 1);
+	let effectiveWidth = $derived(2 * Math.max(beforeWidth, afterWidth) + orpWidth * 2.6);
+	let scale = $derived(containerWidth > 0 && effectiveWidth > containerWidth - 70 ? (containerWidth - 70) / effectiveWidth : 1);
 
 	// Handle playing state changes
 	$effect(() => {
@@ -89,7 +89,7 @@
 		</div>
 		<div 
 			class="flex origin-center whitespace-nowrap w-fit"
-			style="font-size: {reader.fontSize}px; transform: scale({scale});"
+			style="transform: scale({scale});font-size: {reader.fontSize}px;"
 			>
 			<div 
 				class="flex w-full"
