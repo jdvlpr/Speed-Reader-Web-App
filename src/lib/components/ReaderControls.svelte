@@ -59,7 +59,7 @@
 			</button>
 
 			<button 
-					class={["btn hover:preset-filled w-fit transition-opacity duration-1000", reader.playing ? "opacity-0" : 'opacity-100']} 
+					class={["btn hover:preset-filled w-fit transition-opacity duration-1000", reader.playing ? "opacity-0 pointer-events-none" : 'opacity-100']} 
 					disabled={fetching}
 					onclick={async () => {
 						fetching = true;
