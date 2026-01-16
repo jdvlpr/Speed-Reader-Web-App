@@ -15,6 +15,10 @@ const DEFAULT_SETTINGS: ReaderSettings = {
   darkMode: true,
   easeUp: true,
   easeUpSeconds: 3,
+  article: {
+    title: "",
+    href: "",
+  },
 };
 
 class ReaderState {
@@ -115,6 +119,7 @@ class ReaderState {
         darkMode: this.darkMode,
         easeUp: this.easeUp,
         easeUpSeconds: this.easeUpSeconds,
+        article: this.article,
       };
       localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
     }
@@ -137,6 +142,7 @@ class ReaderState {
         this.easeUpSeconds =
           data.easeUpSeconds ?? DEFAULT_SETTINGS.easeUpSeconds;
         document.documentElement.classList.toggle("dark", this.darkMode);
+        this.article = data.article ?? DEFAULT_SETTINGS.article;
       } catch (e) {
         console.error("Failed to parse stored settings:", e);
       }

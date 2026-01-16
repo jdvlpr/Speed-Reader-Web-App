@@ -6,6 +6,10 @@ export interface Word {
 }
 
 export interface ReaderSettings {
+  article: {
+    title: string;
+    href: string;
+  };
   wpm: number;
   fontSize: number; // in pixels
   fontFamily: string;
