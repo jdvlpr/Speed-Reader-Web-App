@@ -82,22 +82,22 @@
 			</button>
 		</div>
 
-		<div class={["flex flex-col gap-4 max-w-3xl items-center mx-auto border rounded-container p-2 ", reader.playing ? 'border-surface-50-950' : 'border-surface-100-900']}>
+		<div class={["flex flex-col gap-4 max-w-3xl items-center mx-auto border rounded-full p-2 ", reader.playing ? 'border-surface-50-950' : 'border-surface-100-900']}>
 			<div class="flex flex-wrap gap-2">
-				<button class={["btn hover:preset-filled transition-opacity duration-1000", reader.playing ? 'opacity-0 pointer-events-none' : 'opacity-100']} title="Go back one word [Left Arrow]" onclick={() => reader.back()}>
-					<ArrowLeftIcon/> <span class="max-[335px]:hidden"> Back</span>
+				<button class={["btn hover:preset-filled transition-opacity duration-1000 rounded-full", reader.playing ? 'opacity-0 pointer-events-none' : 'opacity-100']} title="Go back one word [Left Arrow]" onclick={() => reader.back()}>
+					<ArrowLeftIcon size={32} />
 				</button>
 			
-				<button class="btn hover:preset-filled text-2xl font-bold" title="Play/Pause [Space]" onclick={() => reader.togglePlay()}>
+				<button class="btn hover:preset-filled rounded-full" title="Play/Pause [Space]" onclick={() => reader.togglePlay()}>
 					{#if reader.playing}
-						<PauseIcon size={24} /> Pause
+						<PauseIcon size={48} />
 					{:else}
-						<PlayIcon size={24} /> Play
+						<PlayIcon size={48} />
 					{/if}
 				</button>
 
-				<button class={["btn hover:preset-filled transition-opacity duration-1000", reader.playing ? 'opacity-0 pointer-events-none' : 'opacity-100']} title="Go forward one word [Right Arrow]" onclick={() => reader.forward()}>
-					<ArrowRightIcon/> <span class="max-[335px]:hidden"> Forward</span>
+				<button class={["btn hover:preset-filled transition-opacity duration-1000 rounded-full", reader.playing ? 'opacity-0 pointer-events-none' : 'opacity-100']} title="Go forward one word [Right Arrow]" onclick={() => reader.forward()}>
+					<ArrowRightIcon size={32} />
 				</button>
 			</div>
 		</div>
