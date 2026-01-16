@@ -1,6 +1,9 @@
 <script lang="ts">
 	import { reader } from "$lib/stores/settings.svelte";
-	import { ArrowLeftIcon, ArrowRightIcon, PauseIcon, PencilIcon, PlayIcon, RotateCcwIcon } from "@lucide/svelte";
+  import { fetchRandomArticle } from "$lib/utils/wikipedia";
+	import { ArrowLeftIcon, ArrowRightIcon, LoaderIcon, LucideShuffle, PauseIcon, PencilIcon, PlayIcon, RotateCcwIcon, ShuffleIcon } from "@lucide/svelte";
+
+	let fetching = $state(false);
 
 	// Keyboard shortcuts
 	function handleKeydown(e: KeyboardEvent) {
@@ -54,6 +57,25 @@
 			<button class={["btn hover:preset-filled transition-opacity duration-1000", reader.playing ? 'opacity-0 pointer-events-none' : 'opacity-100']} title="Set text" onclick={() => (reader.showUploader = true)}>
 				<PencilIcon/> Edit Text
 			</button>
+
+			<button 
+					class={["btn hover:preset-filled w-fit transition-opacity duration-1000", reader.playing ? "opacity-0" : 'opacity-100']} 
+					disabled={fetching}
+					onclick={async () => {
+						fetching = true;
+						const article = await fetchRandomArticle();
+						if (article) {
+							reader.loadArticle(article);
+						}
+						fetching = false;
+					}}
+				>
+					{#if fetching}
+						<LoaderIcon class="animate-spin" /> Loading...
+					{:else}
+						<ShuffleIcon/> Wikipedia Article
+					{/if}
+				</button>
 
 			<button class={["btn hover:preset-filled transition-opacity duration-1000", reader.playing ? 'opacity-0 pointer-events-none' : 'opacity-100']} title="Reset text from beginning [R]" onclick={() => reader.reset()}>
 				<RotateCcwIcon/> Restart

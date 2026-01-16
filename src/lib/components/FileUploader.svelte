@@ -1,8 +1,8 @@
 <script lang="ts">
   import { DEFAULT_TEXT } from '$lib/constants';
 	import { reader } from '$lib/stores/settings.svelte';
-	import { fetchDailyArticle } from '$lib/utils/wikipedia';
-  import { BookOpenIcon, RotateCcwIcon, XIcon, LoaderIcon } from '@lucide/svelte';
+	import { fetchDailyArticle, fetchRandomArticle } from '$lib/utils/wikipedia';
+  import { BookOpenIcon, RotateCcwIcon, XIcon, LoaderIcon, ShuffleIcon } from '@lucide/svelte';
 
 	let textInput = $state('');
 	let dragActive = $state(false);
@@ -46,6 +46,7 @@
 			const text = e.target?.result as string;
 			if (text) {
 				reader.loadNewText(text);
+				reader.clearArticle();
 			}
 		};
 		fileReader.onerror = () => {
@@ -57,6 +58,7 @@
 	function handlePaste() {
 		if (textInput.trim()) {
 			reader.loadNewText(textInput);
+			reader.clearArticle();
 			textInput = '';
 		}
 	}
@@ -97,7 +99,10 @@
 			<div class="text-center w-full my-6 relative opacity-60 bg-surface-50 dark:bg-surface-900 inline-block px-4 before:content-[''] before:absolute before:inset-x-0 before:top-1/2 before:h-px before:bg-surface-500/30 before:-z-10">OR</div>
 
 			<div class="flex flex-row flex-wrap justify-center gap-4 mx-auto">
-				<button class="btn hover:preset-filled w-fit" onclick={() => reader.loadNewText(DEFAULT_TEXT)}>
+				<button class="btn hover:preset-filled w-fit" onclick={() => {
+					reader.loadNewText(DEFAULT_TEXT)
+					reader.clearArticle()
+				}}>
 					<RotateCcwIcon/> Use Default Text
 				</button>
 				
@@ -107,14 +112,14 @@
 					onclick={async () => {
 						fetching = true;
 						const article = await fetchDailyArticle();
-						if (article) reader.loadNewText(article);
+						if (article) reader.loadArticle(article);
 						fetching = false;
 					}}
 				>
 					{#if fetching}
 						<LoaderIcon class="animate-spin" /> Loading...
 					{:else}
-						<BookOpenIcon/> Read Today's Article
+						<BookOpenIcon/> Today's Wikipedia Article
 					{/if}
 				</button>
 			</div>

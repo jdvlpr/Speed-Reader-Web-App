@@ -6,6 +6,7 @@
 	import { DEFAULT_TEXT } from '$lib/constants';
 	import { reader } from '$lib/stores/settings.svelte';
 	import { fetchDailyArticle } from '$lib/utils/wikipedia';
+  import { ExternalLinkIcon } from '@lucide/svelte';
 	import { onMount } from 'svelte';
 
 	
@@ -23,9 +24,10 @@
 				if (reader.text === "" && reader.words.length === 0) {
 					fetchDailyArticle().then((article) => {
 						if (article) {
-							reader.loadNewText(article);
+							reader.loadArticle(article);
 						} else {
 							reader.loadNewText(DEFAULT_TEXT);
+							reader.clearArticle();
 						}
 						loading = false;
 					});
@@ -47,10 +49,17 @@
 		<div class="flex flex-col bg-surface-50-950 justify-start gap-4 w-full mt-8">
 
 			<WordDisplay />
-
+			
 			<ReaderControls />
-
+			
 			<SpeedControl />
+			{#if reader.article.title && reader.article.href}
+				<div class={["flex flex-row flex-wrap gap-2 mx-auto transition-opacity duration-1000 text-surface-400-600", reader.playing ? 'opacity-0' : 'opacity-100']}>
+					Wikipedia Article: <a href={reader.article.href} target="_blank" rel="noopener noreferrer" class="underline text-sm flex items-center gap-1 hover:text-primary-500">
+						<ExternalLinkIcon size={16} /> {reader.article.title}
+					</a>
+				</div>
+			{/if}
 		</div>
 	{/if}
 

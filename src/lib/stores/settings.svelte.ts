@@ -33,6 +33,10 @@ class ReaderState {
   currentIndex = $state(0);
   playing = $state(false);
   showUploader = $state(false);
+  article = $state({
+    title: "",
+    href: "",
+  });
 
   private db: IDBDatabase | null = null;
   private indexDebounceTimer: ReturnType<typeof setTimeout> | null = null;
@@ -150,6 +154,17 @@ class ReaderState {
       this.text = storedText;
       this.words = parseText(storedText);
     }
+  }
+
+  async loadArticle(article: { extract: string; title: string; href: string }) {
+    this.article.title = article.title;
+    this.article.href = article.href;
+    this.loadNewText(article.extract);
+  }
+
+  clearArticle() {
+    this.article.title = "";
+    this.article.href = "";
   }
 
   // Actions
