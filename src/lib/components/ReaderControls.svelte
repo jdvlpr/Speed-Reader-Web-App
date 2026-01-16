@@ -13,6 +13,22 @@
 				e.preventDefault();
 				reader.togglePlay();
 				break;
+			case 'ArrowUp':
+				e.preventDefault();
+				if (e.shiftKey) {
+					reader.wpm += 50;
+				} else {
+					reader.wpm += 5;
+				}
+				break;
+			case 'ArrowDown':
+				e.preventDefault();
+				if (e.shiftKey) {
+					reader.wpm -= 50;
+				} else {
+					reader.wpm -= 5;
+				}
+				break;
 			case 'ArrowLeft':
 				e.preventDefault();
 				reader.back();

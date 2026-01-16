@@ -88,7 +88,7 @@
 			<div class="border-t border-surface-100-900 w-full"></div>
 		</div>
 		<div 
-			class="flex origin-center whitespace-nowrap w-fit"
+			class="flex origin-center whitespace-nowrap w-fit will-change-transform"
 			style="transform: scale({scale});font-size: {reader.fontSize}px;"
 			>
 			<div 
@@ -102,7 +102,7 @@
 				</div>
 				<div 
 					bind:clientWidth={orpWidth}
-					class="flex-none flex items-center justify-center text-red-500"
+					class="flex-none flex items-center justify-center dark:text-red-400 text-red-600"
 				>
 					{orpChar}
 				</div>
@@ -118,9 +118,13 @@
 			<div class="flex w-full">
 				<div class="border-b border-surface-100-900 w-full"></div>
 				<div class="w-0 h-10 border-l border-surface-100-900"></div>
-				<div class="border-b border-surface-100-900 w-full"></div>
+				<div class="border-b border-surface-100-900 w-full flex justify-end items-end">
+					<span class="p-2 text-surface-200-800">{reader.wpm} wpm</span>
+				</div>
 			</div>
+			
 			<ProgressBar />
 		</div>
+		
 	</div>
 </div>

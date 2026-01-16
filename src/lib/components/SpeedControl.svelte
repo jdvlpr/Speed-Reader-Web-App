@@ -26,14 +26,14 @@
 </script>
 
 <div class={["flex flex-col gap-4 items-center justify-center max-w-3xl mx-auto transition-opacity duration-1000 max-sm:p-2", settings.playing ? 'opacity-0 pointer-events-none' : 'opacity-100']}>
-	<label for="wpm-slider" class="label w-full">
+	<label for="wpm-slider" class="label w-full" title="Change Words Per Minute [Up Arrow]/[Down Arrow]">
 		<span class="label-text">Words Per Minute: {settings.wpm}</span>
 		<input
 			id="wpm-slider"
 			type="range"
 			min="100"
 			max="1500"
-			step="1"
+			step="5"
 			bind:value={settings.wpm}
 			class="input"
 		/>
