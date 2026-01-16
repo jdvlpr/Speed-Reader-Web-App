@@ -36,7 +36,7 @@ class ReaderState {
 
   private db: IDBDatabase | null = null;
   private indexDebounceTimer: ReturnType<typeof setTimeout> | null = null;
-  private initialized = $state(false);
+  initialized = $state(false);
 
   constructor() {
     if (browser) {
