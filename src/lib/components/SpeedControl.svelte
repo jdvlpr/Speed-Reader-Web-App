@@ -67,7 +67,7 @@
 	</div>
 
 	<div class="flex gap-2">
-		<button class="btn hover:preset-filled w-fit m-2" title="Toggle Light/Dark mode" onclick={toggleDarkMode}>
+		<button class="btn hover:preset-tonal w-fit m-2" title="Toggle Light/Dark mode" onclick={toggleDarkMode}>
 			{#if settings.darkMode}
 			<MoonIcon/>
 			{:else}

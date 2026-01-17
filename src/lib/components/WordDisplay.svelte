@@ -55,8 +55,8 @@
 	let orpWidth = $state(0);
 	let afterWidth = $state(0);
 
-	let effectiveWidth = $derived(2 * Math.max(beforeWidth, afterWidth) + orpWidth * 2.6);
-	let scale = $derived(containerWidth > 0 && effectiveWidth > containerWidth - 70 ? (containerWidth - 70) / effectiveWidth : 1);
+	let effectiveWidth = $derived(2.5 * Math.max(beforeWidth, afterWidth) + orpWidth * 3.5);
+	let scale = $derived(containerWidth > 0 && effectiveWidth > containerWidth - 40 ? (containerWidth - 40) / effectiveWidth : 1);
 
 	// Handle playing state changes
 	$effect(() => {

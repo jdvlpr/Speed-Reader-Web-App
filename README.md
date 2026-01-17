@@ -9,6 +9,7 @@ A fast-paced, Minimalist Speed Reader (RSVP) built with Svelte 5. This tool help
 - **Smart Text Parsing**: Handles punctuation, hyphenated words, and pauses naturally to improve reading flow.
 - **Customizable Speed**: Adjust the reading speed to match your comfort level.
 - **File Upload**: Support for uploading text files to read.
+- **Wikipedia Integration**: Read Wikipedia's featured article of the day or load a random Wikipedia article to practice speed reading.
 - **Modern UI**: Built with Tailwind CSS 4 and Skeleton UI for a sleek, responsive experience.
 
 ## 🚀 Tech Stack

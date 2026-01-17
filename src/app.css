@@ -17,7 +17,3 @@
   background-color: var(--color-surface-50-950);
   color: var(--color-surface-950-50);
 }
-
-@theme {
-  --base-font-family: "museo-sans", sans-serif;
-}

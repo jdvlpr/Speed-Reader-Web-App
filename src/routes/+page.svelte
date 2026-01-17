@@ -55,7 +55,7 @@
 			<SpeedControl />
 
 			{#if reader.article.title && reader.article.href}
-				<div class={["flex flex-row flex-wrap gap-2 mx-auto transition-opacity duration-1000 text-surface-400-600", reader.playing ? 'opacity-0 pointer-events-none' : 'opacity-100']}>
+				<div class={["flex px-2 flex-row flex-wrap gap-2 mx-auto transition-opacity duration-1000 text-surface-400-600", reader.playing ? 'opacity-0 pointer-events-none' : 'opacity-100']}>
 					Wikipedia Article: <a href={reader.article.href} target="_blank" rel="noopener noreferrer" class="underline text-sm flex items-center gap-1 hover:text-primary-500">
 						<ExternalLinkIcon size={16} /> {reader.article.title}
 					</a>

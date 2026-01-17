@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { reader } from '$lib/stores/settings.svelte';
 
-	let progress = $derived(reader.words.length > 0 ? (reader.currentIndex / reader.words.length) * 100 : 0);
+	let index = $derived(reader.currentIndex > 0 ? 1 : 0);
+	let progress = $derived(reader.words.length > 0 ? ((reader.currentIndex + index) / reader.words.length) * 100 : 0);
 
 	function handleClick(e: MouseEvent) {
 		const target = e.currentTarget as HTMLElement;

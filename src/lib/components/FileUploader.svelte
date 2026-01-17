@@ -68,7 +68,7 @@
 	
 	<div class="bg-surface-50 dark:bg-surface-900 p-4 rounded-2xl max-w-[500px] w-full max-h-[90vh] overflow-y-auto" onclick={(e) => e.stopPropagation()}>		
 		<div class="flex flex-col items-end gap-2">
-			<button class="btn hover:preset-filled w-fit" onclick={() => (reader.showUploader = false)}>
+			<button class="btn hover:preset-tonal w-fit" onclick={() => (reader.showUploader = false)}>
 				<XIcon/>
 				</button>
 
@@ -86,7 +86,7 @@
 				
 				<div class="flex flex-wrap gap-4">
 					<button
-					class="btn hover:preset-filled"
+					class="btn hover:preset-tonal"
 					onclick={handlePaste}
 					disabled={!textInput.trim()}
 				>
@@ -99,7 +99,7 @@
 			<div class="text-center w-full my-6 relative opacity-60 bg-surface-50 dark:bg-surface-900 inline-block px-4 before:content-[''] before:absolute before:inset-x-0 before:top-1/2 before:h-px before:bg-surface-500/30 before:-z-10">OR</div>
 
 			<div class="flex flex-row flex-wrap justify-center gap-4 mx-auto">
-				<button class="btn hover:preset-filled w-fit" onclick={() => {
+				<button class="btn hover:preset-tonal w-fit" onclick={() => {
 					reader.loadNewText(DEFAULT_TEXT)
 					reader.clearArticle()
 				}}>
@@ -107,7 +107,7 @@
 				</button>
 				
 				<button 
-					class="btn hover:preset-filled w-fit" 
+					class="btn hover:preset-tonal w-fit" 
 					disabled={fetching}
 					onclick={async () => {
 						fetching = true;
