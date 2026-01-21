@@ -17,3 +17,10 @@
   background-color: var(--color-surface-50-950);
   color: var(--color-surface-950-50);
 }
+
+/* Disable double-tap to zoom */
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  touch-action: manipulation;
+}
